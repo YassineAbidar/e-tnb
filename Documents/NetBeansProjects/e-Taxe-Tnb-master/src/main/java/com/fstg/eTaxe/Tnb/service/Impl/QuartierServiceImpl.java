@@ -44,8 +44,8 @@ public class QuartierServiceImpl implements QuartierService {
 //    }
     @Override
     public void save(Quartier quartier) {
-       service.save(quartier.getSecteur());
-         service.save(quartier.getSecteur());
+       service.saveAndTestExisting(quartier.getSecteur());
+         service.saveAndTestExisting(quartier.getSecteur());
         getQuartierDao().save(quartier);
        
     }

@@ -34,7 +34,7 @@ public class QuartierRest {
     private SecteurService service;
 
     
-    @GetMapping(value = "/liblle/{libelle}")
+    @GetMapping(value ="/libelle/{libelle}")
     public Quartier findByLibelle(@PathVariable String libelle) {
         return quartierService.findByLibelle(libelle);
     }
@@ -52,7 +52,7 @@ public class QuartierRest {
     //tested
     @PostMapping(value = "/")
     public void save(@RequestBody Quartier quartier) {
-        service.save(quartier.getSecteur());
+        service.saveAndTestExisting(quartier.getSecteur());
         quartierService.save(quartier);
     }
 
@@ -92,6 +92,10 @@ public class QuartierRest {
   @GetMapping("/id/{id}")
     public Quartier findByid(@PathVariable long id) {
         return quartierService.findByid(id);
+    }
+   @GetMapping("/exist/{id}")
+    public int exitsts( @PathVariable long id) {
+        return quartierService.exitsts(id);
     }
     
   
